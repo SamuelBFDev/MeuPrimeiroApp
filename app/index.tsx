@@ -20,11 +20,7 @@ export default function Login() {
         onChangeText={(texto) => console.log("Senha", texto)}
         placeholder="Digite a sua senha: "
       />
-      <StyledButton
-        title="Acessar o app"
-        OnPress={() => console.log("Entrar")}
-        color="blue"
-      />
+      <StyledButton title="Acessar o app" OnPress={handleLogin} color="blue" />
       <StatusBar style="auto" />
     </View>
   );

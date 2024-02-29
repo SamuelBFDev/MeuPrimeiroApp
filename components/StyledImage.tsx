@@ -1,13 +1,35 @@
 import React from "react";
+import { View, Image, StyleSheet } from "react-native";
 
-interface StyledImageProps {
-  src: string;
-  alt: string;
-  className?: string;
-}
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  },
+  logo: {
+    width: 66,
+    height: 58,
+  },
+});
 
-const StyledImage: React.FC<StyledImageProps> = ({ src, alt, className }) => {
-  return <img src={src} alt={alt} className={className} />;
+const DisplayAnImage = () => {
+  return (
+    <>
+      <Image
+        style={styles.tinyLogo}
+        source={{
+          uri: "MeuPrimeiroApp/assets/icons8-react-200.png",
+        }}
+      />
+      <Image
+        style={styles.logo}
+        source={require("../assets/icons8-react-200.png")}
+      />
+    </>
+  );
 };
 
-export default StyledImage;
+export default DisplayAnImage;
