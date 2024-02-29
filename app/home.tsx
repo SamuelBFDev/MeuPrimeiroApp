@@ -6,10 +6,9 @@ import StyledText from "../components/StyledText";
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text> Login successful! </Text>
+      <DisplayAnImage />
       <StyledText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, debitis voluptatibus similique obcaecati voluptatem dolorum delectus ea unde ex rerum? Sed neque illum cum voluptatum vitae! Iste asperiores sapiente distinctio?" />
       <Link href="/">Go back to index</Link>
-      <DisplayAnImage />
     </View>
   );
 }
