@@ -6,9 +6,15 @@ import StyledText from "../components/StyledText";
 export default function Home() {
   return (
     <View style={styles.container}>
-      <DisplayAnImage />
-      <StyledText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, debitis voluptatibus similique obcaecati voluptatem dolorum delectus ea unde ex rerum? Sed neque illum cum voluptatum vitae! Iste asperiores sapiente distinctio?" />
-      <Link href="/">Go back to index</Link>
+      <View style={styles.itemContainer}>
+        <DisplayAnImage />
+        <StyledText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, debitis voluptatibus similique obcaecati voluptatem dolorum delectus ea unde ex rerum? Sed neque illum cum voluptatum vitae! Iste asperiores sapiente distinctio?" />
+      </View>
+      <View style={styles.itemContainer}>
+        <DisplayAnImage />
+        <StyledText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, debitis voluptatibus similique obcaecati voluptatem dolorum delectus ea unde ex rerum? Sed neque illum cum voluptatum vitae! Iste asperiores sapiente distinctio?" />
+      </View>
+      <View style={styles.imageContainer}></View>
     </View>
   );
 }
@@ -16,13 +22,19 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  textContainer: {
+  // textContainer: {
+  //   flex: 1,
+  //   marginRight: 10,
+  // },
+  itemContainer: {
     flex: 1,
-    marginRight: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   imageContainer: {
     flex: 1,
