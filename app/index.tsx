@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import StyledInput from "../components/StyledInput";
 import StyledButton from "../components/StyledButton";
 import { router } from "expo-router";
+import DisplayAnImage from "../components/StyledImage";
 
 export default function Login() {
   const handleLogin = () => {
@@ -11,6 +12,9 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.imageContainer}>
+      <DisplayAnImage />
+      </View>
       <Text>Tela de login</Text>
       <StyledInput
         onChangeText={(texto) => console.log("Email:", texto)}
@@ -33,4 +37,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  imageContainer: {
+    width: 75,
+    height: 75,
+    borderRadius: 50,
+    borderWidth: 0,
+    borderColor: "black",
+    marginVertical: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    alignSelf: "auto",
+    backgroundColor: "white",
+    },
 });

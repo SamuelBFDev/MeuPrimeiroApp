@@ -14,6 +14,10 @@ export default function Home() {
         <DisplayAnImage />
         <StyledText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, debitis voluptatibus similique obcaecati voluptatem dolorum delectus ea unde ex rerum? Sed neque illum cum voluptatum vitae! Iste asperiores sapiente distinctio?" />
       </View>
+      <View style={styles.itemContainer}>
+        <DisplayAnImage />
+        <StyledText text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, debitis voluptatibus similique obcaecati voluptatem dolorum delectus ea unde ex rerum? Sed neque illum cum voluptatum vitae! Iste asperiores sapiente distinctio?" />
+      </View>
       <View style={styles.imageContainer}></View>
     </View>
   );
