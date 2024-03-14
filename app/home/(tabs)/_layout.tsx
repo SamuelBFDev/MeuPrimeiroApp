@@ -19,7 +19,34 @@ export default function TabLayout() {
         <Tabs.Screen
           name="settings"
           options={{
-            title: "Configurações",
+            title: "Settings",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome name="cog" size={28} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="comparison"
+          options={{
+            title: "Comparison",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome name="cog" size={28} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="investments"
+          options={{
+            title: "Investments",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome name="cog" size={28} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="regionoverview"
+          options={{
+            title: "Region Overview",
             tabBarIcon: ({ color }) => (
               <FontAwesome name="cog" size={28} color={color} />
             ),

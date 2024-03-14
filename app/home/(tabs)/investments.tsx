@@ -1,13 +1,27 @@
-// InvestmentOpportunities.tsx
+// investments.tsx
 
-import React from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 const InvestmentOpportunities: React.FC = () => {
   // Sample investment data (replace with actual data)
   const investmentRegions = [
-    { name: 'Asia', attractiveness: 'High', industries: ['Tech', 'Manufacturing'] },
-    { name: 'Africa', attractiveness: 'Medium', industries: ['Agriculture', 'Tourism'] },
+    {
+      name: "Asia",
+      attractiveness: "High",
+      industries: ["Tech", "Manufacturing"],
+    },
+    {
+      name: "Africa",
+      attractiveness: "Medium",
+      industries: ["Agriculture", "Tourism"],
+    },
     // ... other regions
   ];
 
@@ -22,7 +36,7 @@ const InvestmentOpportunities: React.FC = () => {
             <View style={styles.regionCard}>
               <Text>{item.name}</Text>
               <Text>Attractiveness: {item.attractiveness}</Text>
-              <Text>Industries: {item.industries.join(', ')}</Text>
+              <Text>Industries: {item.industries.join(", ")}</Text>
             </View>
           </TouchableOpacity>
         )}
@@ -38,12 +52,12 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 16,
   },
   regionCard: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     padding: 16,
     marginBottom: 8,
   },

@@ -1,3 +1,5 @@
+// settings.tsx
+
 import { Text, View } from "@gluestack-ui/themed";
 
 export default function Settings() {
