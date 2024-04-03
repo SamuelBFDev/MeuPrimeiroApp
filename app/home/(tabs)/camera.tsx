@@ -1,44 +1,55 @@
-import { View, Text, Button, Image } from "@gluestack-ui/themed";
+import { StatusBar } from "expo-status-bar";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera/next";
-import { useState } from "react";
 
 export default function Camera() {
-  const [permission, requestPermission] = useCameraPermissions();
   let camera: CameraView | null = null;
-  const [photo, setPhoto] = useState<string | undefined>(undefined);
 
-  const takePhoto = async () => {
-    if (permission && camera) {
-      const photo = await camera.takePictureAsync();
+  const [permission, requestPermission] = useCameraPermissions();
+
+  const takePicture = async () => {
+    if (permission) {
+      const photo = await camera?.takePictureAsync();
       console.log(photo);
-      if (photo?.uri) {
-        setPhoto(photo.uri);
-      }
     }
   };
 
-  if (permission) {
+  if (!permission) {
     return (
-      <View flex={1} justifyContent="center" alignItems="center">
-        <CameraView
-          ref={(componente) => {
-            camera = componente;
-          }}
-          style={{ width: 300, height: 300 }}
-          facing="back"
-        ></CameraView>
-        <Button onPress={takePhoto}>
-          <Text>Tirar foto</Text>
-        </Button>
-        {photo && <Image src={photo}></Image>}
+      <View style={styles.container}>
+        <Text>Sem permissão</Text>
+        <StatusBar style="auto" />
       </View>
     );
   } else {
-    <View flex={1} justifyContent="center" alignItems="center">
-      <Text>Não tem permissão</Text>
-    </View>;
+    return (
+      <View style={styles.container}>
+        <CameraView
+          style={{
+            width: 300,
+            height: 300,
+          }}
+          facing="back"
+          ref={(ref) => {
+            camera = ref;
+          }}
+        />
+        <Pressable onPress={takePicture}>
+          <Text>Tirar foto</Text>
+        </Pressable>
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 /*import { StatusBar } from "expo-status-bar";
 import { View, Text, StyleSheet, Pressable } from "react-native";

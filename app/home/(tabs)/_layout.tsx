@@ -1,7 +1,5 @@
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
-import { GluestackUIProvider } from "@gluestack-ui/themed";
-import { config } from "@gluestack-ui/config";
-import { FontAwesome } from "@expo/vector-icons";
 
 export default function TabLayout() {
   return (
@@ -11,16 +9,16 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" size={28} color={color} />
+            <FontAwesome size={28} name="home" color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Configurações",
+          title: "Settings",
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="cog" size={28} color={color} />
+            <FontAwesome size={28} name="cog" color={color} />
           ),
         }}
       />
@@ -29,7 +27,7 @@ export default function TabLayout() {
         options={{
           title: "Camera",
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="camera" size={28} color={color} />
+            <FontAwesome size={28} name="camera" color={color} />
           ),
         }}
       />

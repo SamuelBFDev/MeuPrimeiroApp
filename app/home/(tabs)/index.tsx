@@ -1,8 +1,9 @@
-import { Text } from "react-native";
 import { Link } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet } from "react-native";
 import { useAuth } from "../../../hooks/auth";
-import { Button } from "@gluestack-ui/themed";
 import { useEffect, useState } from "react";
+import { Divider, ScrollView, Text } from "@gluestack-ui/themed";
 
 interface IPost {
   userId: number;
@@ -16,22 +17,24 @@ export default function Home() {
   const [list, setList] = useState<IPost[]>([]);
 
   useEffect(() => {
-    fetch("http://jsonplaceholder.typicode.com/posts")
+    fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((json) => setList(json));
   }, []);
 
   return (
-    <>
-      <Text>Login ({auth.user.email}) com sucesso!</Text>
-      {list.map((post) => (
-        <Text key={post.id}>{post.title}</Text>
+    <ScrollView flex={1} backgroundColor="#fff">
+      <Text>Olá {auth.user.email}</Text>
+      <Text textDecorationLine="underline" onPress={auth.hangleLogout}>
+        Voltar ao login
+      </Text>
+      <Divider />
+      <Text>Lista de posts</Text>
+      {list.map((item, index) => (
+        <Text key={index}>{item.title}</Text>
       ))}
-      <Link href="/">Voltar ao login</Link>
-      <Button onPress={auth.handleLogout}>
-        <Text>Sair do sistema</Text>
-      </Button>
-    </>
+      <StatusBar style="auto" />
+    </ScrollView>
   );
 }
 

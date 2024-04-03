@@ -1,53 +1,69 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Image } from "react-native";
-import { router } from "expo-router";
+import { View, StyleSheet } from "react-native";
 import {
+  ButtonText,
+  Image,
   Input,
   InputField,
-  Text,
   Button,
-  ButtonText,
+  ButtonIcon,
+  Icon,
 } from "@gluestack-ui/themed";
-import { Entypo } from "@expo/vector-icons";
-import { useState } from "react";
-import { IUserLogin } from "../interfaces/login";
+import { LogIn } from "lucide-react-native";
 import { useAuth } from "../hooks/auth";
+import { getItemAsync } from "expo-secure-store";
+import { useEffect } from "react";
+import { router } from "expo-router";
 
 export default function Login() {
   const auth = useAuth();
 
+  useEffect(() => {
+    async function fetchUser() {
+      const user = await getItemAsync("user");
+      if (user) {
+        router.push("/home");
+      }
+    }
+
+    fetchUser();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text size="sm">Tela de login</Text>
+      <Image
+        size="md"
+        alt="Imagem da tela de login"
+        source={{
+          uri: "LINK",
+        }}
+      />
 
-      <Input variant="outline" size="md" mb={8}>
+      <Input variant="outline" size="lg" my={8} width="90%">
         <InputField
-          placeholder="Digite o seu e-mail"
-          onChangeText={(texto) => auth.setUser({ ...auth.user, email: texto })}
+          placeholder="E-mail"
+          onChangeText={(text) => auth.setUser({ ...auth.user, email: text })}
         />
       </Input>
-
-      <Input variant="outline" size="md" mb={8}>
+      <Input variant="outline" size="lg" mb={8} width="90%">
         <InputField
-          type="password"
-          onChangeText={(texto) =>
-            auth.setUser({ ...auth.user, password: texto })
+          placeholder="Senha"
+          onChangeText={(passw) =>
+            auth.setUser({ ...auth.user, password: passw })
           }
-          placeholder="Digite a sua senha"
         />
       </Input>
-
       <Button
-        onPress={auth.handleLogin}
         size="lg"
         variant="solid"
         action="primary"
+        onPress={auth.handleLogin}
       >
-        <ButtonText>
-          Acessar o app <Entypo name="login" size={24} color="black" />
-        </ButtonText>
+        <ButtonText>Acessar o app </ButtonText>
+        <ButtonIcon>
+          <Icon as={LogIn} size={"md"} color="white" />
+        </ButtonIcon>
       </Button>
-
       <StatusBar style="auto" />
     </View>
   );
@@ -59,10 +75,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  tinyLogo: {
-    width: 100,
-    height: 100,
   },
 });
 
